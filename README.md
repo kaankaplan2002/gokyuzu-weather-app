@@ -1,95 +1,122 @@
-# GökYüzü - Premium Flutter Hava Durumu Uygulaması
+# GökYüzü — Premium Flutter Weather App
 
-GökYüzü; tamamen istemci tarafında (pure Flutter) çalışan, herhangi bir harici backend API veya yerel veritabanı sunucusu kurulumu gerektirmeyen, modern ve responsive bir arayüz tasarımına sahip premium bir hava durumu uygulamasıdır.
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.0%2B-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Dart-3.0%2B-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web%20%7C%20macOS%20%7C%20Windows%20%7C%20Linux-lightgrey?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/API-Open--Meteo-green?style=for-the-badge"/>
+</p>
 
-## 🌟 Özellikler
-- **Doğrudan API Entegrasyonu**: Open-Meteo API'leri (Geocoding ve Forecast) doğrudan uygulama içinden çağrılır. Herhangi bir API anahtarı (key) gerektirmez.
-- **Konum Arama**: Girilen şehir isimlerini enlem ve boylam koordinatlarına otomatik olarak dönüştürür.
-- **Detaylı Ölçümler**: Sıcaklık, Hissedilen Sıcaklık (Thermostat), Nem Oranı, Rüzgar Hızı ve Yağış Miktarı gibi kritik hava durumu verilerini sunar.
-- **Yerel Veri Depolama**: Kullanıcının favori şehirleri ve arama geçmişi, `shared_preferences` paketi aracılığıyla cihaz üzerinde JSON formatında kalıcı olarak saklanır.
-- **Responsive Düzen**: Büyük ekranlarda (Web, Tablet) yan yana panelli yerleşim, mobil dikey ekranlarda ise dikey kaydırılabilir düzen sunar.
-- **Aura Efektleri**: Bulunan konunun güncel hava durumu koduna (açık, yağmurlu, karlı, fırtınalı vb.) bağlı olarak değişen dinamik kart arka planı ve gölge aydınlatmaları.
+> A premium, cross-platform Flutter weather application with a glassmorphic dashboard, dynamic aura effects, city search, and local favorites — powered by the Open-Meteo API with **no API key required**.
 
 ---
 
-## 📂 Proje Yapısı
+## ✨ Features
+
+- **Zero-config API** — Uses Open-Meteo Geocoding & Forecast APIs. No API key or backend setup needed.
+- **City Search** — Converts city names to latitude/longitude coordinates automatically.
+- **Detailed Metrics** — Temperature, Feels Like, Humidity, Wind Speed, and Precipitation.
+- **Local Storage** — Favorites and search history are persisted on-device via `shared_preferences` (JSON format).
+- **Responsive Layout** — Side-by-side panel layout on large screens (Web/Tablet), vertical scrollable layout on mobile.
+- **Dynamic Aura Effects** — Card backgrounds and shadow glows change dynamically based on current weather codes (clear, rainy, snowy, stormy, etc.).
+- **Glassmorphism UI** — Frosted glass cards with blur effects and subtle gradients throughout.
+- **Multi-platform** — Runs natively on Android, iOS, Web, macOS, Windows, and Linux.
+
+---
+
+## 📂 Project Structure
 
 ```
 WEATHER APP/
-├── README.md               # Proje dökümantasyonu (Bu dosya)
-├── .gitignore              # Git yoksayma dosyası (Flutter standart)
-├── pubspec.yaml            # Flutter proje ayarları ve paket tanımları (http, intl, shared_preferences)
+├── README.md                   # Project documentation
+├── .gitignore                  # Flutter standard gitignore
+├── pubspec.yaml                # Flutter project config & dependencies (http, intl, shared_preferences)
 │
 └── lib/
-    ├── main.dart           # Uygulama giriş noktası ve global M3 koyu tema
+    ├── main.dart               # App entry point & global Material 3 dark theme
     │
     ├── models/
-    │   └── weather.dart    # Veri Modelleri (WeatherData, FavoriteCity, SearchHistory)
+    │   └── weather.dart        # Data models (WeatherData, FavoriteCity, SearchHistory)
     │
     ├── services/
-    │   ├── api_service.dart # Open-Meteo doğrudan API çağrıları
-    │   └── storage_service.dart # SharedPreferences ile yerel veritabanı yönetimi
+    │   ├── api_service.dart    # Open-Meteo direct API calls
+    │   └── storage_service.dart# SharedPreferences local storage management
     │
     └── screens/
-        └── dashboard_screen.dart # Glassmorphic kontrol paneli (Arama, detaylar, favoriler, geçmiş)
+        └── dashboard_screen.dart # Glassmorphic dashboard (Search, details, favorites, history)
 ```
 
 ---
 
-## 🚀 Kurulum ve Çalıştırma
+## 🚀 Getting Started
 
-Uygulamayı yerel geliştirme ortamınızda çalıştırmak için aşağıdaki adımları takip edin.
+### Prerequisites
+- **Flutter SDK** 3.0.0 or higher installed on your machine
+- An internet connection (for city search and weather data)
 
-### Önkoşullar
-- Bilgisayarınızda **Flutter SDK** (versiyon 3.0.0 veya üzeri) kurulu olmalıdır.
-- İnternet bağlantısı (Şehir arama ve hava durumunu çekebilmek için).
+### Installation & Run
 
-### Çalıştırma Adımları
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/kaankaplan2002/gokyuzu-weather-app.git
+   cd gokyuzu-weather-app
+   ```
 
-1. Bağımlılıkları yükleyin:
+2. Install dependencies:
    ```bash
    flutter pub get
    ```
 
-2. Uygulamayı Chrome üzerinde çalıştırın (veya bağlı bir emülatör/cihaz seçin):
+3. Run on Chrome (Web):
    ```bash
    flutter run -d chrome
    ```
 
-3. Mobil testler için emülatör açıkken çalıştırın:
+4. Run on a connected device or emulator:
    ```bash
    flutter run
    ```
 
 ---
 
-## 📦 Üretime Dağıtım (Production Build)
+## 📦 Production Build
 
-Uygulamanızı farklı platformlar için derlemek için aşağıdaki standart Flutter komutlarını kullanabilirsiniz:
-
-- **Web Derlemesi**:
-  ```bash
-  flutter build web --release
-  ```
-  Çıktı klasörü: `build/web/`
-
-- **Android (APK) Derlemesi**:
-  ```bash
-  flutter build apk --release
-  ```
-  Çıktı klasörü: `build/app/outputs/flutter-apk/`
-
-- **iOS Derlemesi**:
-  ```bash
-  flutter build ios --release
-  ```
+| Platform | Command | Output |
+|----------|---------|--------|
+| Web | `flutter build web --release` | `build/web/` |
+| Android APK | `flutter build apk --release` | `build/app/outputs/flutter-apk/` |
+| iOS | `flutter build ios --release` | Xcode archive |
+| macOS | `flutter build macos --release` | `build/macos/` |
+| Windows | `flutter build windows --release` | `build/windows/` |
 
 ---
 
-## 🛠️ Kullanılan Harici Servisler
+## 🛠️ External Services
 
-- **Open-Meteo Geocoding API**: Coğrafi isim aramaları için.
-  - `https://geocoding-api.open-meteo.com/v1/search`
-- **Open-Meteo Forecast API**: Hava durumu verileri için.
-  - `https://api.open-meteo.com/v1/forecast`
-- **Google Fonts (Outfit)**: Premium tipografi.
+| Service | Purpose | Docs |
+|---------|---------|------|
+| **Open-Meteo Geocoding API** | City name → coordinates | [geocoding-api.open-meteo.com](https://geocoding-api.open-meteo.com) |
+| **Open-Meteo Forecast API** | Weather data & forecasts | [open-meteo.com](https://open-meteo.com) |
+| **Google Fonts (Outfit)** | Premium typography | [fonts.google.com](https://fonts.google.com/specimen/Outfit) |
+
+---
+
+## 📦 Dependencies
+
+```yaml
+dependencies:
+  http: ^1.x          # HTTP requests to Open-Meteo APIs
+  intl: ^0.x          # Date & number formatting
+  shared_preferences: ^2.x  # Local key-value storage
+  google_fonts: ^6.x  # Outfit font family
+```
+
+---
+
+## 📄 License
+
+This project is open-source. Feel free to fork, modify, and build upon it.
+
+---
+
+<p align="center">Built with ❤️ using Flutter & Open-Meteo</p>
